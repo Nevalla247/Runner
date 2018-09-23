@@ -11,6 +11,7 @@ public class RunnerApplicationTests {
 
 	@Test
 	public void contextLoads() {
+            // Ei vielä testejä
 	}
 
 }
