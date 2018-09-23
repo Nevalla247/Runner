@@ -5,9 +5,13 @@
  */
 package com.Runner.Runner.controller;
 
+import com.Runner.Runner.domain.User;
+import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
@@ -16,8 +20,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class TestController {
-    @GetMapping("*")
+    @GetMapping("/home")
     public String home(){
         return "index";
     }
-}
+    
+    @GetMapping("/register")
+    public String register(@ModelAttribute User user){
+        return "register";
+    }
+    
+    
+    @GetMapping("/success")
+    public String success(){
+        return "success";
+    }
+    
+    @PostMapping("/newaccount")
+    public String create(@Valid @ModelAttribute User user, BindingResult bindingresult ){
+        
+        if(bindingresult.hasErrors()){
+            return "register";
+        }
+        return "redirect:/success";
+    }
+}   
+
+

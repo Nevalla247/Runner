@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Sign up for Runner</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <h1>Sign up for Runner app!</h1>
+
+        <form action="#" th:action="@{/newaccount}" th:object="${user}" method="POST">
+            <table>
+                <tr>
+                    <td>Username: </td>
+                    <td><input type="text" th:field="*{username}" /></td>
+                    <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">First name</td>
+                </tr>
+                <tr>
+                    <td>Password: </td>
+                    <td><input type="text" th:field="*{password}" /></td>
+                    <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">First name</td>
+                </tr>
+                <tr>
+                    <td>First name: </td>
+                    <td><input type="text" th:field="*{first_name}" /></td>
+                    <td th:if="${#fields.hasErrors('first_name')}" th:errors="*{first_name}">First name</td>
+                </tr>
+                <tr>
+                    <td>Last name: </td>
+                    <td><input type="text" th:field="*{last_name}" /></td>
+                    <td th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}">Last name </td>
+                </tr>
+                <tr>
+                    <td>Nick name </td>
+                    <td><input type="text" th:field="*{nickname}" /></td>
+                    <td th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}"> Nick name</td>
+                </tr>
+                <tr>
+                    <td>Email: </td>
+                    <td><input type="text" th:field="*{email}" /></td>
+                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Virheviesti</td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Sign up</button></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
