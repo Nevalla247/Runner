@@ -25,10 +25,6 @@ public class TestController {
         return "index";
     }
     
-    @GetMapping("/register")
-    public String register(@ModelAttribute User user){
-        return "register";
-    }
     
     
     @GetMapping("/success")
@@ -36,14 +32,7 @@ public class TestController {
         return "success";
     }
     
-    @PostMapping("/newaccount")
-    public String create(@Valid @ModelAttribute User user, BindingResult bindingresult ){
-        
-        if(bindingresult.hasErrors()){
-            return "register";
-        }
-        return "redirect:/success";
-    }
+    
 }   
 
 

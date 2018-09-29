@@ -1,24 +1,13 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Sign up for Runner</title>
-        <meta charset="UTF-8" />
+        <title> Registration successful </title>
+        <meta charset="UTF-8"/>
     </head>
     <body>
-        <h1>Sign up for Runner app!</h1>
-
-        <form action="#" th:action="@{/newaccount}" th:object="${personData}" method="POST">
+        <form action="#" th:action="@{/newaccount}" th:object="${user}" method="POST">
             <table>
-                <tr>
-                    <td>Username: </td>
-                    <td><input type="text" th:field="*{username}" /></td>
-                    <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">First name</td>
-                </tr>
-                <tr>
-                    <td>Password: </td>
-                    <td><input type="text" th:field="*{password}" /></td>
-                    <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">First name</td>
-                </tr>
                 <tr>
                     <td>First name: </td>
                     <td><input type="text" th:field="*{first_name}" /></td>
