@@ -11,11 +11,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonData extends AbstractPersistable<Long>{
+public class PersonData{
     
     @NotEmpty
     @Size(min=8, max=20)

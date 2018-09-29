@@ -64,7 +64,7 @@ public class UserController {
          // encryptataan salasana
         acc.setPassword(passwordEncoder.encode(persondata.getPassword()));
         
-        acc.setUsernumber(tunnuslukum+1);
+        
         
         // Luodaan objekti joka lisätään user-tauluun
         User usr = new User();
@@ -73,7 +73,7 @@ public class UserController {
         usr.setNickname(persondata.getNickname());
         usr.setEmail(persondata.getEmail());
         
-        usr.setUsernumber(tunnuslukum+1);
+        usr.setUsername(persondata.getUsername());
         
         accRepo.save(acc);
         usrRepo.save(usr);

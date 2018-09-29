@@ -25,5 +25,5 @@ public class User extends AbstractPersistable<Long> {
     
     private String email;
     
-    private Long usernumber;
+    private String username;
 }
