@@ -30,7 +30,7 @@ public class HomeController {
         return "index";
     }
     
-   
+    // Ohjaus rekisteröinnin jälkeen
     @GetMapping("/success")
     public String success(){
         

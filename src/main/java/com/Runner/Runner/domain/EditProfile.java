@@ -1,3 +1,5 @@
+// luokka jota käytetää käyttäjän tietojen muokkaukseen
+
 
 package com.Runner.Runner.domain;
 

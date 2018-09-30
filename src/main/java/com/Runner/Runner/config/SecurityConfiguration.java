@@ -31,7 +31,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         http.headers().frameOptions().sameOrigin();
         
        
-        
+        // polkujen autentisoinnit, rekisteröinti ja pääsivu avoinna kaikille,
+        // muuhun tarvitaan autentikointi.
         http.authorizeRequests()
                 .antMatchers("h2-console/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/").permitAll()

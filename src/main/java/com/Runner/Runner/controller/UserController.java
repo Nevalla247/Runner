@@ -44,11 +44,12 @@ public class UserController {
         return "register";
     }
     
-    
+    // Uuden tunnuksen luonti, käytetään syötteiden validointia
     @Transactional
     @PostMapping("/newaccount")
     public String create(@Valid @ModelAttribute PersonData persondata, BindingResult bindingresult ){
         
+        // jos virheitä, palautetaan sivu uudelleen
         if(bindingresult.hasErrors()){
             return "register";
         }
@@ -77,6 +78,7 @@ public class UserController {
         usr.setAccount(acc);
         acc.setUser(usr);
         
+        // Tallennetaan user ja account
         accRepo.save(acc);
         usrRepo.save(usr);
         
@@ -86,6 +88,7 @@ public class UserController {
     @GetMapping("/userlogged")
     public String main(Model model){
         
+        // Käyttäjätietojen haku
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
         
@@ -93,12 +96,14 @@ public class UserController {
         
         User usr = usrRepo.findByAccount_id(account.getId());
         System.out.println(usr.getFirst_name());
-            
+        
+        // Lisätään malliin nimi
         model.addAttribute("name",usr.getFirst_name());
         
         Date now = new Date();
         SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE, MMMM d, yyyy");
         
+        // Lisätään malliin päivämäärä
         model.addAttribute("date", dateFormatter.format(now));
         
         return "mainpage";

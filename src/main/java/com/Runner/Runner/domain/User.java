@@ -37,7 +37,7 @@ public class User extends AbstractPersistable<Long> {
     @OneToMany(mappedBy="user")
     private List<Run> runs;
     
-    
+    // Käyttäjän juoksutiedot
     public List<Run> getRuns(){
         if(this.runs == null){
             this.runs = new ArrayList<>();

@@ -29,6 +29,7 @@ public class Run extends AbstractPersistable<Long>{
     
     private LocalDate rundate;
     
+    // Käyttäjällä voi olla useita juoksutietoja
     @ManyToOne
     @JoinColumn(name="user_id", nullable=false)
     private User user;

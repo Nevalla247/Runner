@@ -1,3 +1,4 @@
+// Luokka, jota käytetään hyväksi rekisteröinnissä
 
 package com.Runner.Runner.domain;
 

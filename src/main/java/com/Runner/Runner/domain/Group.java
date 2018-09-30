@@ -1,4 +1,4 @@
-// Luokka ryhmälle, käyttäjät voivat kuulua ryhmään
+// Luokka ryhmälle, käyttäjät voivat kuulua ryhmään. Ei toteutettu
 package com.Runner.Runner.domain;
 
 /**

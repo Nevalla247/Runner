@@ -24,6 +24,7 @@ public class Account extends AbstractPersistable<Long> {
     private String username;
     private String password;
     
+    // yhden suhde yhteen mappaus
     @OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL,mappedBy="account")
     private User user;
     

@@ -46,6 +46,7 @@ public class LoggedInController {
     @Autowired
     private RunRepository runRepo;
     
+    // Profiilisivun mappaus
     @GetMapping("/profile")
     public String profile(@ModelAttribute EditProfile editprofile, Model model){
         
@@ -62,8 +63,10 @@ public class LoggedInController {
         Date now = new Date();
         SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE, MMMM d, yyyy");
         
+        // Malliin päivämäärä
         model.addAttribute("date", dateFormatter.format(now));
         
+        // Malliin käyttäjätunnus
         model.addAttribute("username",username);
         
         return "profile";
@@ -159,6 +162,7 @@ public class LoggedInController {
     @PostMapping("/run")
     public String lisaa(@RequestParam String location, @RequestParam double duration, @RequestParam double distance,@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate rundate){
         
+        // käyttäjän tietojen haku
         Authentication auth2 = SecurityContextHolder.getContext().getAuthentication();
         String username = auth2.getName();
         
@@ -166,6 +170,8 @@ public class LoggedInController {
         
         User usr = usrRepo.findByAccount_id(acc.getId());
         
+        
+        // Tallennetaan uusi juoksutieto tietokantaan
         Run run = new Run();
         run.setLocation(location);
         run.setDuration(duration);
@@ -183,6 +189,7 @@ public class LoggedInController {
         
     }
     
+    // Juoksutiedon poisto
     @DeleteMapping("/runs/{runId}")
     public String poista(@PathVariable Long runId){
         System.out.println(runId);
