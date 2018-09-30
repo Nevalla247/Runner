@@ -9,8 +9,11 @@ import com.Runner.Runner.repository.UserRepository;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -53,11 +56,6 @@ public class UserController {
             return "register";
         }
         
-        // käyttäjätunnus ja salasana olisi voitu yhdistää user-tauluun, mutta
-        // ne päätettiin nyt eriyttää. Usernumber attribuutti yhdistää näitä tauluja.
-        Long tunnuslukum = accRepo.count();
-        
-        
         // Luodaan objekti joka lisätään account-tauluun
         Account acc = new Account();
         acc.setUsername(persondata.getUsername());
@@ -79,6 +77,19 @@ public class UserController {
         usrRepo.save(usr);
         
         return "redirect:/success";
+    }
+    
+    @GetMapping("/userlogged")
+    public String main(Model model){
+        
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        User usr = usrRepo.findByUsername(username);
+            
+            
+        model.addAttribute("name",usr.getFirst_name());
+        
+        return "mainpage";
     }
     
    

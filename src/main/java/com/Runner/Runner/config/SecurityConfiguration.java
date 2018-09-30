@@ -39,14 +39,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .antMatchers(HttpMethod.GET, "/register").permitAll()
                 .antMatchers(HttpMethod.POST, "/newaccount").permitAll()
                 .antMatchers(HttpMethod.GET, "/success").permitAll()
+                .antMatchers(HttpMethod.GET, "/userlogged").authenticated()
                 .anyRequest().authenticated();
                 
         http.formLogin()
                 .permitAll()
+                .defaultSuccessUrl("/userlogged")
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login");
+                .logoutSuccessUrl("/home");
     }
     
     @Autowired

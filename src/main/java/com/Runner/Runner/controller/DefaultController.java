@@ -18,33 +18,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class DefaultController {
     
     @Autowired
-    private PasswordEncoder passwordEncoder;
-    
-    @Autowired
     private AccountRepository userDetailsRepository;
     
-    @PostConstruct
-    public void init() {
-        if (userDetailsRepository.findByUsername("maxwell") != null) {
-            return;
-        }
-
-        Account user = new Account();
-        user.setUsername("maxwell");
-        user.setPassword(passwordEncoder.encode("smart"));
-        
-        Account user2 = new Account();
-        user2.setUsername("copycat");
-        // Vaikka salasana on sama tietokannassa oleva hash on eri
-        user2.setPassword(passwordEncoder.encode("smart"));
-        
-        user2 = userDetailsRepository.save(user2);
-
-        user = userDetailsRepository.save(user);
-    }
     
     @GetMapping("/")
     public String handleDefault() {
         return "redirect:/home";
     }
+ 
+    
 }
