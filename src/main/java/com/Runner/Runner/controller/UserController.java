@@ -92,7 +92,7 @@ public class UserController {
         Account account = accRepo.findByUsername(username);
         
         User usr = usrRepo.findByAccount(account);
-            
+        System.out.println(usr.getFirst_name());
             
         model.addAttribute("name",usr.getFirst_name());
         

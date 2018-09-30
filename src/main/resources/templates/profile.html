@@ -13,15 +13,47 @@
     </head>
     <body>
 
-        <h1>Welcome to Runner<span th:text="', '+${name}"> </span>!</h1>
+        <h1>Welcome to Runner<span th:text="', '+${user.first_name}"> </span>!</h1>
         <div th:text="'Today is '+${date}"></div>
-        <hr>
+        <hr/>
         <div>Profile</div>   |   <div><a href="/runs">Runs</a></div>   |   <div><a href="/groups">Groups</a></div>
         <div><form method="post" action="#" th:action="@{/logout}"><input type="submit" name="logout" value="Logout"/></form></div>
-        <hr>
+        <hr/>
             <div>
                 <h1>Profile:</h1>
+                <h2 th:text="'User name: '+${username}">User name: </h2>
+                <p>To change your personal information, type in the field the corresponsing information and hit "Update information" - button</p>
+                <hr/>
+                <form action="#" th:action="@{/updatedata}" th:object="${editProfile}" method="POST">
+            <table>
+                <tr>
+                    <td>First name: <span th:text="${user.first_name}"></span></td>
+                    <td><input type="text" th:field="*{first_name}" /></td>
+                    <td th:if="${#fields.hasErrors('first_name')}" th:errors="*{first_name}">First name</td>
+                </tr>
+                <tr>
+                    <td>Last name: <span th:text="${user.last_name}"></span></td>
+                    <td><input type="text" th:field="*{last_name}" /></td>
+                    <td th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}">Last name </td>
+                </tr>
+                <tr>
+                    <td>Nick name: <span th:text="${user.nickname}"></span></td>
+                    <td><input type="text" th:field="*{nickname}" /></td>
+                    <td th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}"> Nick name</td>
+                </tr>
+                <tr>
+                    <td>Email: <span th:text="${user.email}"></span></td>
+                    <td><input type="text" th:field="*{email}" /></td>
+                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Virheviesti</td>
+                </tr>
+                
+                <tr>
+                    <td><button type="submit">Update information</button></td>
+                </tr>
+            </table>
+        </form>
             </div>
+            
     </body>
 </html>
 
