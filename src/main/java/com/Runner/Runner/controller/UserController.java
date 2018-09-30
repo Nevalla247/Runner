@@ -6,6 +6,8 @@ import com.Runner.Runner.domain.PersonData;
 import com.Runner.Runner.domain.User;
 import com.Runner.Runner.repository.AccountRepository;
 import com.Runner.Runner.repository.UserRepository;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,8 +72,10 @@ public class UserController {
         usr.setLast_name(persondata.getLast_name());
         usr.setNickname(persondata.getNickname());
         usr.setEmail(persondata.getEmail());
+       
         
-        usr.setUsername(persondata.getUsername());
+        usr.setAccount(acc);
+        acc.setUser(usr);
         
         accRepo.save(acc);
         usrRepo.save(usr);
@@ -84,10 +88,18 @@ public class UserController {
         
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
-        User usr = usrRepo.findByUsername(username);
+        
+        Account account = accRepo.findByUsername(username);
+        
+        User usr = usrRepo.findByAccount(account);
             
             
         model.addAttribute("name",usr.getFirst_name());
+        
+        Date now = new Date();
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE, MMMM d, yyyy");
+        
+        model.addAttribute("date", dateFormatter.format(now));
         
         return "mainpage";
     }

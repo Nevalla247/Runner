@@ -1,13 +1,12 @@
 package com.Runner.Runner.domain;
 
-import java.time.LocalDate;
 import javax.persistence.Entity;
-import javax.validation.constraints.Size;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -25,5 +24,8 @@ public class User extends AbstractPersistable<Long> {
     
     private String email;
     
-    private String username;
+    
+    @OneToOne(fetch=FetchType.LAZY, optional = false)
+    @JoinColumn(name="user", nullable =false)
+    private Account account;
 }
