@@ -4,11 +4,19 @@
     <head>
         <meta charset="UTF-8" />
         <title>Runner main</title>
+        <style>
+            div{
+            display: inline-block;
+            }
+            
+        </style>
     </head>
     <body>
 
         <h1>Welcome to Runner<span sec:authorize="isAuthenticated()" th:text="', '+${name}"> </span>!</h1>
         <div th:text="'Today is '+${date}"></div>
+        <hr>
+        <div><a href="/profile">Profile</a></div>   |   <div><a href="/runs">Runs</a></div>   |   <div><a href="/groups">Groups</a></div>
         <div sec:authorize="isAuthenticated()"><form method="post" action="#" th:action="@{/logout}"><input type="submit" name="logout" value="Logout"/></form></div>
         <div sec:authorize="isAnonymous()"><a th:href="@{/login}">Sign in</a> OR <a th:href="@{/register}">Sign up</a></div>
     </body>

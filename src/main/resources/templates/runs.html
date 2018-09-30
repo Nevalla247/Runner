@@ -1,0 +1,27 @@
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Runs</title>
+        <style>
+            div{
+            display: inline-block;
+            }
+            
+        </style>
+    </head>
+    <body>
+
+        <h1>Welcome to Runner<span th:text="', '+${name}"> </span>!</h1>
+        <div th:text="'Today is '+${date}"></div>
+        <hr/>
+            <div><a href="/profile">Profile</a></div>   |   <div>Run</div>   |   <div><a href="/groups">Groups</a></div>
+        <div><form method="post" action="#" th:action="@{/logout}"><input type="submit" name="logout" value="Logout"/></form></div>
+        <hr/>
+            <div>
+                <h1>Runs:</h1>
+            </div>
+    </body>
+</html>
+
