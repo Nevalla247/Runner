@@ -1,5 +1,7 @@
 # Runner
-WPO harjoitustyö
+WPO harjoitustyö / Tapio Nevalainen 199719
 
-1. Gitin testausta
-2. Integraation testausta, yhdistettiin Github -> TravisCI -> Heroku
+Runner-appi, johon voi rekisteröityä ja tallentaa tietoja juoksuharjoitteista.
+Tallennettavat tiedot ovat: kesto, matka ja paikka.
+
+
