@@ -46,4 +46,7 @@ public class User extends AbstractPersistable<Long> {
         return this.runs;
     }
     
+    public void addRun(Run run){
+        this.runs.add(run);
+    }
 }

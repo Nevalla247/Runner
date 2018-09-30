@@ -10,5 +10,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Tee
  */
 public interface UserRepository extends JpaRepository<User,Long>{
-    User findByAccount(Account account);
+    User findByAccount_id(Long id);
 }

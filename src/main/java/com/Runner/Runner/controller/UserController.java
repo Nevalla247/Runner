@@ -91,7 +91,7 @@ public class UserController {
         
         Account account = accRepo.findByUsername(username);
         
-        User usr = usrRepo.findByAccount(account);
+        User usr = usrRepo.findByAccount_id(account.getId());
         System.out.println(usr.getFirst_name());
             
         model.addAttribute("name",usr.getFirst_name());

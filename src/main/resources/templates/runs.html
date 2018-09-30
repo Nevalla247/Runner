@@ -22,6 +22,31 @@
             <div>
                 <h1>Runs:</h1>
             </div>
+        
+        <h2>Add new run</h2>
+
+        <div>
+            Enter information and press submit:<br/>
+            <form action="/run" method="POST">
+                Location: <input type="text" name="location" id="location"/><br/>
+                Distance: <input type="text" name="distance" id="distance"/><br/>
+                Duration: <input type="text" name="duration" id="duration"/><br/>
+                Date: <input type="date" name="rundate" id="rundate"></input><br/ >
+                <input type="submit"/>
+            </form>
+        </div>
+        
+        <ul>
+            <li th:each="run : ${runs}">
+                
+                <div th:text="${run.rundate}+ ' - at ' +${run.location} + ' - ' +${run.distance}+' kilometers' + ' - '+${run.duration} + ' minutes'">run</div>
+                <form th:action="@{/runs/{runId}(runId=${run.id})}" th:method="DELETE">
+                    <input type="submit" value="Remove" th:id="${'remove-' + run.id}"/>
+                </form><br/>
+               
+            </li>
+        </ul>
+       
     </body>
 </html>
 

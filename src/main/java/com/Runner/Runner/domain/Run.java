@@ -1,7 +1,7 @@
 // Luokka yksittäiselle juoksutiedolle, liittyy yksittäiseen käyttäjään
 package com.Runner.Runner.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,14 +23,14 @@ public class Run extends AbstractPersistable<Long>{
     
     private double distance;
     
-    private Date date;
-    
     private double duration;
     
     private String location;
     
+    private LocalDate rundate;
+    
     @ManyToOne
-    @JoinColumn(name="run_id", nullable=false)
+    @JoinColumn(name="user_id", nullable=false)
     private User user;
     
 }

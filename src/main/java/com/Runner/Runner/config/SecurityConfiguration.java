@@ -40,6 +40,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .antMatchers(HttpMethod.POST, "/newaccount").permitAll()
                 .antMatchers(HttpMethod.GET, "/success").permitAll()
                 .antMatchers(HttpMethod.GET, "/userlogged").authenticated()
+                .antMatchers(HttpMethod.GET, "/runs").authenticated()
+                .antMatchers(HttpMethod.POST, "/run").authenticated()
                 .anyRequest().authenticated();
                 
         http.formLogin()

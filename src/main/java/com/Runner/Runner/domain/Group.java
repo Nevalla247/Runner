@@ -7,4 +7,6 @@ package com.Runner.Runner.domain;
  */
 public class Group {
     
+    
+    
 }
