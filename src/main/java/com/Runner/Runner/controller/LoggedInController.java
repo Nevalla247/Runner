@@ -94,26 +94,7 @@ public class LoggedInController {
     }
     
     
-    @GetMapping("/runs")
-    public String runs(Model model){
-        
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
-        
-        Account account = accRepo.findByUsername(username);
-        
-        User usr = usrRepo.findByAccount(account);
-            
-            
-        model.addAttribute("name",usr.getFirst_name());
-        
-        Date now = new Date();
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE, MMMM d, yyyy");
-        
-        model.addAttribute("date", dateFormatter.format(now));
-        
-        return "runs";
-    }
+    
     
     @GetMapping("/groups")
     public String groups(Model model){
